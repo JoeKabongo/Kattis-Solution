@@ -1,4 +1,11 @@
+# problem description: https://open.kattis.com/problems/geneticsearch
 def count_substring(string1, string2):
+    """
+    count how many substring of string2 equals string1
+    :param string1:
+    :param string2:
+    :return:
+    """
     l = len(string2)
     s = len(string1)
     result = 0
@@ -11,6 +18,7 @@ def count_substring(string1, string2):
 
 while True:
 
+    #grabbing the input
     strings = input().split()
     S = strings[0]
     if S == '0':
@@ -20,8 +28,10 @@ while True:
     l_length = len(L)
     s_length = len(S)
 
+    #same string, type1
     same =  count_substring(S, L)
 
+    #removing one character, aka type2
     delete = 0
     used = set()
     for i in range(0, s_length):
@@ -30,6 +40,7 @@ while True:
             delete += count_substring(x, L)
             used.add(x)
 
+    #adding characte, aka type3
     add = 0
     used = set()
     array = ['A', 'G', 'C', 'T']
